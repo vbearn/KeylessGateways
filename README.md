@@ -52,7 +52,7 @@ The application uses these communication protocols:
 - **Http protocol** for communication of the client to the Api Gateway and then to (re-routing) to the microservices. The communication between Api Gateway and microservices are **planned to be upgraded** to gRPC, using [Envoy](https://www.envoyproxy.io/) as recommended by Microsoft.
 - **RabbitMQ** as an Event Bus (implemented via [MassTransit](https://masstransit-project.com/)) for asynchronous communication for data updates propagation across microservices
 
-![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide3.jpg)
+![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide3.JPG)
 
 ### User Flows
 
@@ -61,10 +61,10 @@ The application has two types of user:
 - **Admins:** can perform a wide range of actions including managing everything through the management service (define doors and users, authorize users to access doors), view entrance histories for all users, and open doors on bahalf of other users (This policy is easily configurable via `IDoorAccessPolicy` interface implementations).
 - **Non-admins**: can open doors for which they are authorized, and can see **their own** entrance history.
 
-![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide4.jpg)
+![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide4.JPG)
 
 ### Postman
 
 Some of the most important endpoints are exported with Postman and can be accessed from `postman` directory
 
-![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide5.jpg)
+![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide5.JPG)
