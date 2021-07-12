@@ -25,7 +25,7 @@ You should be able to browse different components of the application by using th
 
 This application is cross-platform, developed in .NET 5, and based on a microservice oriented architecture implementation with multiple autonomous microservices (each one owning its own data/db).
 
-![](images/Slide1.jpg)
+![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide1.JPG)
 
 ### Scalablity
 
@@ -39,7 +39,7 @@ The reason for using microservice oriented architecture was the requirement for 
   - We used a dedicated **Identity microservice**, to off-load the resource-consuming task of user management and authetication from our other operational services.
   - We have currently used an implementaion based on **Microsoft Identity** server for the sake of simplicity of the application, but later it can later be out-sourced to use Azure Active Directory in a fully cloud-native approach.
 
-![](images/Slide2.jpg)
+![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide2.JPG)
 
 Each microservice implements a data-driven, CRUD approache, with traditional layers (Controller, Services, Database). We have an Api Gatewaybuild using Ocelot wich expose the services to the outside.
 
@@ -52,7 +52,7 @@ The application uses these communication protocols:
 - **Http protocol** for communication of the client to the Api Gateway and then to (re-routing) to the microservices. The communication between Api Gateway and microservices are **planned to be upgraded** to gRPC, using [Envoy](https://www.envoyproxy.io/) as recommended by Microsoft.
 - **RabbitMQ** as an Event Bus (implemented via [MassTransit](https://masstransit-project.com/)) for asynchronous communication for data updates propagation across microservices
 
-![](images/Slide3.jpg)
+![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide3.jpg)
 
 ### User Flows
 
@@ -61,10 +61,10 @@ The application has two types of user:
 - **Admins:** can perform a wide range of actions including managing everything through the management service (define doors and users, authorize users to access doors), view entrance histories for all users, and open doors on bahalf of other users (This policy is easily configurable via `IDoorAccessPolicy` interface implementations).
 - **Non-admins**: can open doors for which they are authorized, and can see **their own** entrance history.
 
-![](images/Slide4.jpg)
+![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide4.jpg)
 
 ### Postman
 
 Some of the most important endpoints are exported with Postman and can be accessed from `postman` directory
 
-![](images/Slide5.jpg)
+![](https://raw.githubusercontent.com/vbearn/KeylessGateways/master/images/Slide5.jpg)
