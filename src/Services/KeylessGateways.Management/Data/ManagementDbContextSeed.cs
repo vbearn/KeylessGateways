@@ -22,12 +22,12 @@ namespace KeylessGateways.Management.Data
                     {
                         new Door
                         {
-                            Id = 1,
+                            Id = new Guid(),
                             Name = "Tunnel",
                         },
                         new Door
                         {
-                            Id = 2,
+                            Id = new Guid(),
                             Name = "Office",
                         }
                     });

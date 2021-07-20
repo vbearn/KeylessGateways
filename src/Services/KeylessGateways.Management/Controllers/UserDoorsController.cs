@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -44,7 +45,7 @@ namespace KeylessGateways.Management.Controllers
 
         [HttpGet]
         [ProducesResponseType((int) HttpStatusCode.Unauthorized)]
-        [ProducesResponseType(typeof(List<DoorDto>), (int) HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(List<UserDoorDto>), (int) HttpStatusCode.OK)]
         public virtual async Task<ActionResult<List<UserDoorDto>>> GetAll(CancellationToken cancellationToken)
         {
             var list = await _userDoorRepository.TableNoTracking
@@ -58,7 +59,7 @@ namespace KeylessGateways.Management.Controllers
         [ProducesResponseType((int) HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int) HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(UserDoorDto), (int) HttpStatusCode.OK)]
-        public virtual async Task<ActionResult<UserDoorDto>> Get(long id, CancellationToken cancellationToken)
+        public virtual async Task<ActionResult<UserDoorDto>> Get(Guid id, CancellationToken cancellationToken)
         {
             var dto = await _userDoorRepository.TableNoTracking
                 .ProjectTo<UserDoorDto>(_mapper.ConfigurationProvider)
@@ -93,8 +94,8 @@ namespace KeylessGateways.Management.Controllers
             await _userDoorRepository.AddAsync(entity, cancellationToken);
 
             _logger.LogInformation("[Door: {doorId} User: {userId}] UserDoorCreatedEvent -> notifying the DoorEntrance microservice of the newly created user door access", entity.DoorId, entity.UserId);
-            var createdEventBus = _mapper.Map<UserDoorCreatedEvent>(entity);
-            await _bus.Publish<UserDoorCreatedEvent>(createdEventBus, cancellationToken);
+            var createdEventBus = _mapper.Map<UserDoorCreatedUpdatedEvent>(entity);
+            await _bus.Publish<UserDoorCreatedUpdatedEvent>(createdEventBus, cancellationToken);
             _logger.LogInformation("[Door: {doorId} User: {userId}] UserDoorCreatedEvent published", entity.DoorId, entity.UserId);
 
             var dtoForGet = _mapper.Map<UserDoorDto>(entity);
@@ -105,7 +106,7 @@ namespace KeylessGateways.Management.Controllers
         [ProducesResponseType((int) HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int) HttpStatusCode.NotFound)]
         [ProducesResponseType((int) HttpStatusCode.NoContent)]
-        public virtual async Task<ActionResult> Update(long id, UserDoorCreateUpdateDto dto,
+        public virtual async Task<ActionResult> Update(Guid id, UserDoorCreateUpdateDto dto,
             CancellationToken cancellationToken)
         {
             var entity = await _userDoorRepository.GetByIdAsync(cancellationToken, id);
@@ -119,7 +120,7 @@ namespace KeylessGateways.Management.Controllers
             await _userDoorRepository.UpdateAsync(entity, cancellationToken);
 
             _logger.LogInformation("[Door: {doorId} User: {userId}] UserDoorUpdatedEvent -> notifying the DoorEntrance microservice of the updated user door access", entity.DoorId, entity.UserId);
-            await _bus.Publish<UserDoorUpdatedEvent>(_mapper.Map<UserDoorUpdatedEvent>(entity), cancellationToken);
+            await _bus.Publish<UserDoorCreatedUpdatedEvent>(_mapper.Map<UserDoorCreatedUpdatedEvent>(entity), cancellationToken);
             _logger.LogInformation("[Door: {doorId} User: {userId}] UserDoorUpdatedEvent published", entity.DoorId, entity.UserId);
 
             return NoContent();
@@ -129,7 +130,7 @@ namespace KeylessGateways.Management.Controllers
         [ProducesResponseType((int) HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int) HttpStatusCode.NotFound)]
         [ProducesResponseType((int) HttpStatusCode.NoContent)]
-        public virtual async Task<ActionResult> Delete(long id, CancellationToken cancellationToken)
+        public virtual async Task<ActionResult> Delete(Guid id, CancellationToken cancellationToken)
         {
             var entity = await _userDoorRepository.GetByIdAsync(cancellationToken, id);
             if (entity == null)

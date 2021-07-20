@@ -1,17 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace KeylessGateways.Management.Models
 {
-    public class DoorDto
+  
+    public class DoorCreateUpdateDto
     {
-        public long Id { get; set; }
+        [Required]
         public string Name { get; set; }
-
     }
-    public class DoorUpdateDto
+
+    public class DoorDto : DoorCreateUpdateDto
     {
-        public string Name { get; set; }
+        public Guid Id { get; set; }
 
     }
 }

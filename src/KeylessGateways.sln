@@ -23,6 +23,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeylessGateways.ApiGateway", "ApiGateway\KeylessGateways.ApiGateway\KeylessGateways.ApiGateway.csproj", "{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{995A67BB-967B-4490-AE5C-B08EAC4C4952}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-only-db-bus.yml = docker-compose-only-db-bus.yml
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeylessGateways.Management.UnitTests", "Services\KeylessGateways.Management.UnitTests\KeylessGateways.Management.UnitTests.csproj", "{67F80107-06AB-4084-9D7E-BB7B76F45419}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +61,10 @@ Global
 		{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67F80107-06AB-4084-9D7E-BB7B76F45419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67F80107-06AB-4084-9D7E-BB7B76F45419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67F80107-06AB-4084-9D7E-BB7B76F45419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67F80107-06AB-4084-9D7E-BB7B76F45419}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +77,7 @@ Global
 		{140634DF-B268-460C-B709-3D947ABAD5F6} = {904658D6-5611-4B85-8C5E-4F49F72C6F65}
 		{4E24F832-8999-4D97-8AF4-CF3F3235EAB7} = {904658D6-5611-4B85-8C5E-4F49F72C6F65}
 		{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A} = {3A52100F-F65D-4B81-94E0-7296FEB869A5}
+		{67F80107-06AB-4084-9D7E-BB7B76F45419} = {904658D6-5611-4B85-8C5E-4F49F72C6F65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDB7E44A-EAAC-4AF1-A4F9-1F3A1F9CFD79}

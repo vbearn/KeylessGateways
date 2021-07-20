@@ -7,9 +7,11 @@ namespace KeylessGateways.Management.Models
 
     public class UserDoorCreateUpdateDto
     {
-        public long DoorId { get; set; }
+        [Required]
+        public Guid DoorId { get; set; }
         
-        public long UserId { get; set; }
+        [Required]
+        public Guid UserId { get; set; }
 
         public bool IsTimeLimited { get; set; }
         public DateTime? StartTime { get; set; }
@@ -17,6 +19,6 @@ namespace KeylessGateways.Management.Models
     }
     public class UserDoorDto : UserDoorCreateUpdateDto
     {
-        public long Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace KeylessGateways.DoorEntrance
 {
@@ -60,6 +61,9 @@ namespace KeylessGateways.DoorEntrance
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseAutoLogging();
+            app.UseSerilogRequestLogging();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

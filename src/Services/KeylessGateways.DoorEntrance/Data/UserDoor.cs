@@ -7,10 +7,10 @@ namespace KeylessGateways.DoorEntrance.Data
 {
     public class UserDoor
     {
-        public long Id { get; set; }
-        public long DoorId { get; set; }
+        public Guid Id { get; set; }
+        public Guid DoorId { get; set; }
 
-        public long UserId { get; set; }
+        public Guid UserId { get; set; }
 
         public bool IsTimeLimited { get; set; }
         public DateTime? StartTime { get; set; }

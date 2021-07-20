@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KeylessGateways.Management.Migrations
 {
     [DbContext(typeof(ManagementDbContext))]
-    [Migration("20210711181946_Init_Db")]
-    partial class Init_Db
+    [Migration("20210720035119_Initial_Migration")]
+    partial class Initial_Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,9 +21,9 @@ namespace KeylessGateways.Management.Migrations
 
             modelBuilder.Entity("KeylessGateways.Management.Data.Door", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
@@ -35,12 +35,12 @@ namespace KeylessGateways.Management.Migrations
 
             modelBuilder.Entity("KeylessGateways.Management.Data.UserDoor", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("char(36)");
 
-                    b.Property<long>("DoorId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("DoorId")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("EndTime")
                         .HasColumnType("datetime(6)");
@@ -51,8 +51,8 @@ namespace KeylessGateways.Management.Migrations
                     b.Property<DateTime?>("StartTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 

@@ -53,7 +53,7 @@ namespace KeylessGateways.Management.Controllers
         }
 
         [HttpGet("{id}", Name = "GetUser")]
-        public virtual async Task<ActionResult<UserDto>> Get(long id, CancellationToken cancellationToken)
+        public virtual async Task<ActionResult<UserDto>> Get(Guid id, CancellationToken cancellationToken)
         {
             var entity = await _userManager.FindByIdAsync(id.ToString());
             if (entity == null)
@@ -92,7 +92,7 @@ namespace KeylessGateways.Management.Controllers
 
 
         [HttpPut("{id}")]
-        public virtual async Task<ActionResult> Update(long id, UserCreateUpdateDto dto, CancellationToken cancellationToken)
+        public virtual async Task<ActionResult> Update(Guid id, UserCreateUpdateDto dto, CancellationToken cancellationToken)
         {
             var entity = await _userManager.FindByIdAsync(id.ToString());
 

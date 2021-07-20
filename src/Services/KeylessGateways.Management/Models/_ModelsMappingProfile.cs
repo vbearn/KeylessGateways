@@ -9,7 +9,7 @@ namespace KeylessGateways.Management.Models
         public _ModelsMappingProfile()
         {
             CreateMap<Door, DoorDto>();
-            CreateMap<DoorUpdateDto, Door>();
+            CreateMap<DoorCreateUpdateDto, Door>();
 
             CreateMap<UserDoor, UserDoorDto>();
             CreateMap<UserDoorCreateUpdateDto, UserDoor>();

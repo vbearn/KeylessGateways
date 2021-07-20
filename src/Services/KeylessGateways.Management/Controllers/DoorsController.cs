@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -52,7 +53,7 @@ namespace KeylessGateways.Management.Controllers
         [ProducesResponseType((int) HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int) HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(DoorDto), (int) HttpStatusCode.OK)]
-        public virtual async Task<ActionResult<DoorDto>> Get(long id, CancellationToken cancellationToken)
+        public virtual async Task<ActionResult<DoorDto>> Get(Guid id, CancellationToken cancellationToken)
         {
             var dto = await _doorsRepository.TableNoTracking.ProjectTo<DoorDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync(p => p.Id.Equals(id), cancellationToken);
@@ -68,7 +69,7 @@ namespace KeylessGateways.Management.Controllers
         [HttpPost]
         [ProducesResponseType((int) HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int) HttpStatusCode.Created)]
-        public virtual async Task<ActionResult<DoorDto>> Create(DoorUpdateDto dto, CancellationToken cancellationToken)
+        public virtual async Task<ActionResult<DoorDto>> Create(DoorCreateUpdateDto dto, CancellationToken cancellationToken)
         {
             var entity = _mapper.Map<Door>(dto);
 
@@ -82,7 +83,7 @@ namespace KeylessGateways.Management.Controllers
         [ProducesResponseType((int) HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int) HttpStatusCode.NotFound)]
         [ProducesResponseType((int) HttpStatusCode.NoContent)]
-        public virtual async Task<ActionResult> Update(long id, DoorUpdateDto dto, CancellationToken cancellationToken)
+        public virtual async Task<ActionResult> Update(Guid id, DoorCreateUpdateDto dto, CancellationToken cancellationToken)
         {
             var entity = await _doorsRepository.GetByIdAsync(cancellationToken, id);
             if (entity == null)
@@ -101,12 +102,12 @@ namespace KeylessGateways.Management.Controllers
         [ProducesResponseType((int) HttpStatusCode.Unauthorized)]
         [ProducesResponseType((int) HttpStatusCode.NotFound)]
         [ProducesResponseType((int) HttpStatusCode.NoContent)]
-        public virtual async Task<ActionResult> Delete(long id, CancellationToken cancellationToken)
+        public virtual async Task<ActionResult> Delete(Guid id, CancellationToken cancellationToken)
         {
             var hasUsages = await _userDoorRepository.TableNoTracking.AnyAsync(ud => ud.DoorId == id, cancellationToken);
             if (hasUsages)
             {
-                return Conflict("This Door is used in some UserDoors. Delete them first before continuing.");
+                return Conflict("This Door is used in some UserDoors. Delete them first before proceeding with the Delete.");
             }
 
             var entity = await _doorsRepository.GetByIdAsync(cancellationToken, id);

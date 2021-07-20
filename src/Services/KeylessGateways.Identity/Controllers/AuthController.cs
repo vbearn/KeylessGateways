@@ -79,6 +79,7 @@ namespace KeylessGateways.Identity.Controllers
         [HttpPost("refresh-token")]
         public async Task<ActionResult> RefreshToken()
         {
+            // TODO: refresh token should use a minimized version of token
             try
             {
                 var userName = User.Identity?.Name;

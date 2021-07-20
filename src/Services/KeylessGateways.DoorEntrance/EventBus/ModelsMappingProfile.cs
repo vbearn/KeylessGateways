@@ -8,8 +8,7 @@ namespace KeylessGateways.DoorEntrance.EventBus
     {
         public ModelsMappingProfile()
         {
-            CreateMap<UserDoorCreatedEvent, UserDoor>();
-            CreateMap<UserDoorUpdatedEvent, UserDoor>();
+            CreateMap<UserDoorCreatedUpdatedEvent, UserDoor>();
         }
     }
 }

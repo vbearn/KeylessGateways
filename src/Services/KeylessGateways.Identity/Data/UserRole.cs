@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KeylessGateways.Identity.Data
 {
-    public class UserRole : IdentityUserRole<long> {
+    public class UserRole : IdentityUserRole<Guid> {
 
         public User User { get; set; }
 

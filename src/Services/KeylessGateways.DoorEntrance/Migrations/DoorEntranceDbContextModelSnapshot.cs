@@ -19,18 +19,18 @@ namespace KeylessGateways.DoorEntrance.Migrations
 
             modelBuilder.Entity("KeylessGateways.DoorEntrance.Data.DoorEntranceHistory", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("char(36)");
 
-                    b.Property<long>("DoorId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("DoorId")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("EntranceTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
@@ -39,12 +39,12 @@ namespace KeylessGateways.DoorEntrance.Migrations
 
             modelBuilder.Entity("KeylessGateways.DoorEntrance.Data.UserDoor", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("char(36)");
 
-                    b.Property<long>("DoorId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("DoorId")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("EndTime")
                         .HasColumnType("datetime(6)");
@@ -55,8 +55,8 @@ namespace KeylessGateways.DoorEntrance.Migrations
                     b.Property<DateTime?>("StartTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 

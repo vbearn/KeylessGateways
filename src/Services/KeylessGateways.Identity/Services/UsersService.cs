@@ -9,7 +9,7 @@ namespace KeylessGateways.Identity.Services
 {
     public interface IUserService
     {
-        Task<(bool Valid, long Id)> IsValidUserCredentialsAsync(string userName, string password);
+        Task<(bool Valid, Guid Id)> IsValidUserCredentialsAsync(string userName, string password);
         Task<bool> IsAnExistingUserAsync(string userName);
         Task<IList<string>> GetUserRoleAsync(string userName);
     }
@@ -42,23 +42,23 @@ namespace KeylessGateways.Identity.Services
             return await _userManager.GetRolesAsync(userToVerify);
         }
 
-        public async Task<(bool Valid, long Id)> IsValidUserCredentialsAsync(string userName, string password)
+        public async Task<(bool Valid, Guid Id)> IsValidUserCredentialsAsync(string userName, string password)
         {
             _logger.LogInformation($"Validating user [{userName}]");
             if (string.IsNullOrWhiteSpace(userName))
             {
-                return (false, 0);
+                return (false, Guid.Empty);
             }
 
             if (string.IsNullOrWhiteSpace(password))
             {
-                return (false, 0);
+                return (false, Guid.Empty);
             }
 
             var userToVerify = await _userManager.FindByEmailAsync(userName);
             if (userToVerify == null)
             {
-                return (false, 0);
+                return (false, Guid.Empty);
             }
 
             var passwordMatch = await _userManager.CheckPasswordAsync(userToVerify, password);
@@ -67,7 +67,7 @@ namespace KeylessGateways.Identity.Services
                 return (true, userToVerify.Id);
             }
 
-            return (false, 0);
+            return (false, Guid.Empty);
         }
 
     }

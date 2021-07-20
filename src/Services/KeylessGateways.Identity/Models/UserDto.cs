@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace KeylessGateways.Identity.Models
@@ -6,7 +7,7 @@ namespace KeylessGateways.Identity.Models
    
     public class UserDto {
 
-        public long Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Email { get; set; }
 
@@ -18,7 +19,10 @@ namespace KeylessGateways.Identity.Models
  
     public class UserCreateUpdateDto {
 
+        [EmailAddress]
         public string Email { get; set; }
+
+        [Required]
         public string Password { get; set; }
 
         public bool Admin { get; set; }

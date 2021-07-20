@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Security.Claims;
@@ -51,7 +52,7 @@ namespace KeylessGateways.DoorEntrance.Controllers
             {
                 DoorId = dto.DoorId,
                 UserId = dto.UserId,
-                CurrentContextUserId = long.Parse(HttpContext.User.FindFirstValue("Id")),
+                CurrentContextUserId = Guid.Parse(HttpContext.User.FindFirstValue("Id")),
                 CurrentContextUserRole = HttpContext.User.FindFirstValue(ClaimTypes.Role)
             };
 
@@ -80,7 +81,7 @@ namespace KeylessGateways.DoorEntrance.Controllers
             if (userRole != "Admin")
             {
                 // if you are not an admin, you're restricted to view only your own entrance histories
-                var userId = long.Parse(HttpContext.User.FindFirstValue("Id"));
+                var userId = Guid.Parse(HttpContext.User.FindFirstValue("Id"));
                 repo = repo.Where(x => x.UserId == userId);
             }
 

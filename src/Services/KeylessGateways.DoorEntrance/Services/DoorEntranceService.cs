@@ -33,7 +33,7 @@ namespace KeylessGateways.DoorEntrance.Services
 
         public async Task<bool> OpenDoor(OpenDoorExtendedModel doorOpenRequest, CancellationToken cancellationToken)
         {
-            if (doorOpenRequest == null || doorOpenRequest.UserId <= 0 || doorOpenRequest.DoorId <= 0)
+            if (doorOpenRequest == null || doorOpenRequest.UserId == Guid.Empty || doorOpenRequest.DoorId  == Guid.Empty)
             {
                 throw new ArgumentException();
             }
