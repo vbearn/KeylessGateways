@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{904658D6-5611-4B85-8C5E-4F49F72C6F65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{66839031-F94F-4B51-90C9-14029432F8EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeylessGateways.Common", "Common\KeylessGateways.Common\KeylessGateways.Common.csproj", "{30772ED6-2803-4878-95E4-DDA78C54871B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeylessGateways.Identity", "Services\KeylessGateways.Identity\KeylessGateways.Identity.csproj", "{9215B746-988C-42E4-924F-A1A644473B15}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeylessGateways.Management", "Services\KeylessGateways.Management\KeylessGateways.Management.csproj", "{E246315E-CFBD-479C-A9FB-35B193DEA946}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeylessGateways.Services.Shared", "Services\Shared\KeylessGateways.Services.Shared\KeylessGateways.Services.Shared.csproj", "{CF3F93A5-1F9A-4410-AB0E-524B5D18DB97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{140634DF-B268-460C-B709-3D947ABAD5F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeylessGateways.DoorEntrance", "Services\KeylessGateways.DoorEntrance\KeylessGateways.DoorEntrance.csproj", "{4E24F832-8999-4D97-8AF4-CF3F3235EAB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{3A52100F-F65D-4B81-94E0-7296FEB869A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeylessGateways.ApiGateway", "ApiGateway\KeylessGateways.ApiGateway\KeylessGateways.ApiGateway.csproj", "{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{995A67BB-967B-4490-AE5C-B08EAC4C4952}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-only-db-bus.yml = docker-compose-only-db-bus.yml
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0D58528B-27AA-4B6B-8F09-0D89CF85472D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeylessGateways.DoorEntrance.UnitTests", "Services\KeylessGateways.DoorEntrance.UnitTests\KeylessGateways.DoorEntrance.UnitTests.csproj", "{442E6720-73D8-4EA0-8EE8-C2D9E18C218F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30772ED6-2803-4878-95E4-DDA78C54871B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30772ED6-2803-4878-95E4-DDA78C54871B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30772ED6-2803-4878-95E4-DDA78C54871B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30772ED6-2803-4878-95E4-DDA78C54871B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9215B746-988C-42E4-924F-A1A644473B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9215B746-988C-42E4-924F-A1A644473B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9215B746-988C-42E4-924F-A1A644473B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9215B746-988C-42E4-924F-A1A644473B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E246315E-CFBD-479C-A9FB-35B193DEA946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E246315E-CFBD-479C-A9FB-35B193DEA946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E246315E-CFBD-479C-A9FB-35B193DEA946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E246315E-CFBD-479C-A9FB-35B193DEA946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF3F93A5-1F9A-4410-AB0E-524B5D18DB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF3F93A5-1F9A-4410-AB0E-524B5D18DB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF3F93A5-1F9A-4410-AB0E-524B5D18DB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF3F93A5-1F9A-4410-AB0E-524B5D18DB97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E24F832-8999-4D97-8AF4-CF3F3235EAB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E24F832-8999-4D97-8AF4-CF3F3235EAB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E24F832-8999-4D97-8AF4-CF3F3235EAB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E24F832-8999-4D97-8AF4-CF3F3235EAB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{442E6720-73D8-4EA0-8EE8-C2D9E18C218F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{442E6720-73D8-4EA0-8EE8-C2D9E18C218F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{442E6720-73D8-4EA0-8EE8-C2D9E18C218F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{442E6720-73D8-4EA0-8EE8-C2D9E18C218F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{30772ED6-2803-4878-95E4-DDA78C54871B} = {66839031-F94F-4B51-90C9-14029432F8EF}
+		{9215B746-988C-42E4-924F-A1A644473B15} = {904658D6-5611-4B85-8C5E-4F49F72C6F65}
+		{E246315E-CFBD-479C-A9FB-35B193DEA946} = {904658D6-5611-4B85-8C5E-4F49F72C6F65}
+		{CF3F93A5-1F9A-4410-AB0E-524B5D18DB97} = {140634DF-B268-460C-B709-3D947ABAD5F6}
+		{140634DF-B268-460C-B709-3D947ABAD5F6} = {904658D6-5611-4B85-8C5E-4F49F72C6F65}
+		{4E24F832-8999-4D97-8AF4-CF3F3235EAB7} = {904658D6-5611-4B85-8C5E-4F49F72C6F65}
+		{C4B45864-AF63-4B66-8F9A-B8DDAB44A40A} = {3A52100F-F65D-4B81-94E0-7296FEB869A5}
+		{442E6720-73D8-4EA0-8EE8-C2D9E18C218F} = {0D58528B-27AA-4B6B-8F09-0D89CF85472D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDB7E44A-EAAC-4AF1-A4F9-1F3A1F9CFD79}
+	EndGlobalSection
+EndGlobal

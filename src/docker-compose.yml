@@ -1,0 +1,67 @@
+version: '3.4'
+
+services:
+
+  seq:
+    image: datalust/seq:latest
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "45100:80"
+
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+    ports:
+      - "43306:3306"
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}keylessgatewaysapigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/KeylessGateways.ApiGateway/Dockerfile
+    ports:
+      - "45000:80"
+    depends_on:
+       - mariadb
+       - rabbitmq
+
+  doorentrance:
+    image: ${DOCKER_REGISTRY-}keylessgatewaysdoorentrance
+    build:
+      context: .
+      dockerfile: Services/KeylessGateways.DoorEntrance/Dockerfile
+    ports:
+      - "45012:80"
+    depends_on:
+       - mariadb
+       - rabbitmq
+
+  identity:
+    image: ${DOCKER_REGISTRY-}keylessgatewaysidentity
+    build:
+      context: .
+      dockerfile: Services/KeylessGateways.Identity/Dockerfile
+    ports:
+      - "45010:80"
+    depends_on:
+       - mariadb
+  
+  management:
+    image: ${DOCKER_REGISTRY-}keylessgatewaysmanagement
+    build:
+      context: .
+      dockerfile: Services/KeylessGateways.Management/Dockerfile
+    ports:
+      - "45011:80"
+    depends_on:
+       - mariadb
+       - rabbitmq
